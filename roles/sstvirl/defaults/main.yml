@@ -48,12 +48,10 @@ sstvirl_docker_image: "cloudb0x/sstvirl:{{ sstvirl_docker_image_tag }}"
 
 # Ports
 sstvirl_docker_ports_defaults:
-  - "0.0.0.0:{{ sstvirl_web_port }}:{{ sstvirl_web_port }}"
+  - "{{ sstvirl_web_port }}:{{ sstvirl_web_port }}"
 sstvirl_docker_ports_custom: []
 sstvirl_docker_ports: "{{ sstvirl_docker_ports_defaults
-                                + sstvirl_docker_ports_custom
-                            if (not reverse_proxy_is_enabled)
-                            else [] + sstvirl_docker_ports_custom }}"
+                                + sstvirl_docker_ports_custom }}"
 
 # Envs
 sstvirl_docker_envs_log_level: "0"
