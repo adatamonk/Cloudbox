@@ -10,8 +10,8 @@
 ---
 - name: Pre-Install | Check if Trackarr config exists
   stat:
-    path: "{{ trackarr_config_file_path }}"
-  register: trackarr_config_file_stat
+    path: "{{ trackarr_paths_config_location }}"
+  register: trackarr_paths_config_location_stat
 
 - name: Pre-Install | New Trackarr config tasks
   block:
@@ -26,7 +26,7 @@
   - name: Pre-Install | Import default Trackarr config
     template:
       src: 'config.yaml.j2'
-      dest: "{{ trackarr_config_file_path }}"
+      dest: "{{ trackarr_paths_config_location }}"
       owner: "{{ user.name }}"
       group: "{{ user.name }}"
       mode: 0775
@@ -36,4 +36,4 @@
     set_fact:
       trackarr_docker_state: 'stopped'
 
-  when: not trackarr_config_file_stat.stat.exists
+  when: not trackarr_paths_config_location_stat.stat.exists

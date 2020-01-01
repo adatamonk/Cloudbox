@@ -60,4 +60,3 @@
     - { role: nzbthrottle, tags: ['nzbthrottle'] }
     - { role: ddclient, tags: ['ddclient'] }
     - { role: trackarr, tags: ['trackarr'] }
-    

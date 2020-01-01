@@ -3,7 +3,7 @@ database:
   maxagehours: 72
 pvr:
 - name: "{{ sonarr_name }}"
-  url: "{{ sonarr_url }}"
+  url: "{{ sonarr_web_url }}"
   apikey: "{{ sonarr_api_key }}"
   enabled: true
   filters:
@@ -17,7 +17,7 @@ pvr:
     delays:
       - 'not (TorrentName contains "1080") ? 15 : 0'
 - name: "{{ radarr_name }}"
-  url: "{{ radarr_url }}"
+  url: "{{ radarr_web_url }}"
   apikey: "{{ radarr_api_key }}"
   enabled: true
   filters:
@@ -36,8 +36,8 @@ server:
   apikey: "{{ trackarr_server_apikey }}"
   host: 0.0.0.0
   pass: "{{ user.pass }}"
-  port: 7337
-  publicurl: "{{ trackarr_url }}"
+  port: "{{ trackarr_web_port }}"
+  publicurl: "{{ trackarr_web_url }}"
   user: {{ user.name }}
 trackers:
   iptorrents:
